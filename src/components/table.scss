@@ -1,0 +1,40 @@
+.table {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
+    max-width: 800px;
+    font-size: 0.5rem;
+    border: solid 1px #DDDDDD;
+
+    td, th {
+        padding: 0.5rem;
+        border-bottom: solid 1px #EEEEEE;
+    }
+
+    thead tr {
+        background-color: #F3F3F3;
+        th {
+            position: relative;
+            border-bottom: solid 1px #DDDDDD;    
+
+            .divider {
+                position: absolute;
+                width: 1px;
+                background-color: #DDDDDD;
+                top: 10%;
+                bottom: 10%;
+                right: 0;
+            }
+        }
+
+        th:last-child {
+            .divider { display: none; }
+        }
+    }
+
+    .summary {
+        background-color: #F3F3F3;
+        text-align: right;
+    }
+
+}
