@@ -4,6 +4,8 @@ import MostIsolated from './components/most-isolated';
 import './App.scss';
 import findMostIsolatedCountry from './services/part1';
 import data from './mock-data';
+import { enrichList } from './services/geo-service';
+
 
 
 const table_meta = [
@@ -20,6 +22,10 @@ function sortByDate(data) {
 
 function App() {
     sortByDate(data);
+
+    enrichList(data, '10 Downing st. London').then(console.log);
+
+
     const { country, degree } = findMostIsolatedCountry(data);
 
     return (
