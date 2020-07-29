@@ -1,6 +1,14 @@
 import React from 'react';
 import './table.scss';
 
+function getClassName(item) {
+    if (item.closest)
+        return 'closest';
+    if (item.farthest)
+        return 'farthest';
+    return '';
+}
+
 export default props => {
     const { meta = [], data = [] } = props;
 
@@ -18,7 +26,7 @@ export default props => {
                 {data.map((dataItem, i) => 
                 <tr key={i}>
                     {meta.map((metaItem, i) => 
-                    <td key={i}><span>{dataItem[metaItem.key]}</span></td>)
+                    <td key={i} className={getClassName(dataItem)}><span>{dataItem[metaItem.key]}</span></td>)
                     }
                 </tr>)
                 }

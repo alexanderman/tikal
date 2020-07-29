@@ -9,6 +9,14 @@
     td, th {
         padding: 0.5rem;
         border-bottom: solid 1px #EEEEEE;
+
+        &.closest {
+            color: #158013;
+        }
+
+        &.farthest {
+            color: #b01919;
+        }
     }
 
     thead tr {

@@ -8,7 +8,6 @@ function getCoordinates(address) {
     return Geocode.fromAddress(address).then(
         response => {
             const { lat, lng } = response.results[0].geometry.location;
-            console.log(address, [lat, lng]);
             return [lat, lng];
         }
     );

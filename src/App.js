@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from './components/table';
 import MostIsolated from './components/most-isolated';
 import './App.scss';
 import findMostIsolatedCountry from './services/part1';
 import data from './mock-data';
 import { enrichList } from './services/geo-service';
-
-
 
 const table_meta = [
     { title: 'Agent ID', key: 'agent', style: { width: '15%' } },
@@ -22,16 +20,21 @@ function sortByDate(data) {
 
 function App() {
     sortByDate(data);
-
-    enrichList(data, '10 Downing st. London').then(console.log);
-
-
     const { country, degree } = findMostIsolatedCountry(data);
+
+    const [missions, setMissions] = useState(data);
+
+    useEffect(() => {
+        enrichList(data, '10 Downing st. London').then(list => {
+            setMissions(list);
+        });
+    }, []);
+
 
     return (
         <div className="App">
             <div className="container">
-                <Table meta={table_meta} data={data} />
+                <Table meta={table_meta} data={missions} />
                 <MostIsolated country={country} degree={degree} />
             </div>
         </div>
